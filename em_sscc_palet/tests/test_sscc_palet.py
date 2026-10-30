@@ -62,6 +62,7 @@ class TestSsccPalet(TransactionCase):
 
     def test_sscc_empty_without_prefix(self):
         """No GS1 prefix configured: the pallet is created without SSCC."""
-        pallet = self.env['stock.package'].create({})
-        self.assertFalse(self.env.company.prefijo_gs1)
+        company_c = self.env['res.company'].create({'name': 'Compañía C'})
+        self.assertFalse(company_c.prefijo_gs1)
+        pallet = self.env['stock.package'].with_company(company_c).create({})
         self.assertFalse(pallet.sscc)
