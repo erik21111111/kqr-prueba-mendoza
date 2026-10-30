@@ -1,9 +1,10 @@
 # Parte 2 — ¿Configurar o desarrollar?
 
 ## 1. Fabricante de maquinaria: añadir un bloque al final del presupuesto
-- **Desarrollo a medida, pequeño.** En Odoo 19 elegir una plantilla ejecuta `Command.clear()`: siempre reemplaza las líneas.
-- Cómo: botón "Añadir bloque" que copia al final las líneas de una plantilla (sección + productos) sin tocar las existentes.
-- Las plantillas (`sale.order.template`) siguen siendo el catálogo de bloques: sin modelos nuevos y las mantiene el cliente.
+- **Módulo existente (OCA).** En Odoo 19 elegir una plantilla ejecuta `Command.clear()`: siempre reemplaza las líneas.
+- `sale_multi_template_application` (OCA/sale-workflow, Tecnativa) aplica varias plantillas conservando las líneas existentes.
+- Publicado para 17.0/18.0; en 19.0 su migración es un PR abierto (#4473): lo probaría y, si hace falta, completaría la migración.
+- Si no encajara, el desarrollo sería pequeño: heredar ese onchange para añadir las líneas al final en vez de reemplazarlas.
 - Preguntaría: ¿precio de la plantilla o de la tarifa del cliente?, ¿solo al final o en cualquier posición?, ¿cuántos bloques hay?
 
 ## 2. Alimentación con tiendas: que el TPV no pida lote
